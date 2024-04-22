@@ -28,15 +28,32 @@ pub enum Command {
     Append(usize),
 }
 
+impl Command {
+    fn Uppercase (&self, my_string: String){
+        let mut output = String::new();
+        for character in my_string {
+            output = character.to_uppercase()
+        }
+    }
+
+    fn Trim (&self, my_string: String){
+        return my_string.trim();
+    }
+
+    fn Append (&self,times: usize){
+        let mut output = String::new();
+        for i in usize{
+
+        }
+    }
+}
+
 mod my_module {
     use super::Command;
-
-    // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
-        // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
+    pub fn transformer(input: Vec<(string, command),(string, command),(string, command),(string, command)>) -> Vec<Strings,Strings,Strings,Strings> {
+        let mut output = vec![];
         for (string, command) in input.iter() {
-            // TODO: Complete the function body. You can do it!
+            output.append(string.command());
         }
         output
     }
@@ -45,7 +62,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
+    use crate::my_module;
     use super::Command;
 
     #[test]
