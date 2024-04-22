@@ -25,6 +25,13 @@ struct Team {
     goals_conceded: u8,
 }
 
+impl Team {
+    fn modify_goals (&mut self, goals_scored: u8, goals_conceded: u8){
+        *&mut self.goals_scored += goals_scored;
+        *&mut self.goals_conceded += goals_conceded;
+    }
+}
+
 fn build_scores_table(results: String) -> HashMap<String, Team> {
     // The name of the team is the key and its associated struct is the value.
     let mut scores: HashMap<String, Team> = HashMap::new();
@@ -40,6 +47,11 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded by team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+
+        let team_1 = Team{goals_scored:team_1_score, goals_conceded:team_2_score};
+        let team_2 = Team{goals_scored:team_2_score, goals_conceded:team_1_score};
+        scores.entry(team_1_name).and_modify(|team| team.modify_goals(team_1_score, team_2_score)).or_insert(team_1);
+        scores.entry(team_2_name).and_modify(|team| team.modify_goals(team_2_score, team_1_score)).or_insert(team_2);
     }
     scores
 }
