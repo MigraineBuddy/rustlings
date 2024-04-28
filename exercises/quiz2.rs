@@ -57,7 +57,7 @@ mod my_module {
 
 #[cfg(test)]
 mod tests {
-    use super::my_module::*;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]
